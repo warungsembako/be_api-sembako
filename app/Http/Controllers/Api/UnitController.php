@@ -64,20 +64,28 @@ class UnitController extends Controller
      *     description="Endpoint add new unit",
      *     summary="Service unit",
      *     security={{"sanctum": {}}},
-     *     @OA\Parameter(
-     *         name="unit",
-     *         in="query",
-     *         description="unit field",
-     *         required=true,
-     *         @OA\Schema(type="string")
-     *     ),
-     *     @OA\Parameter(
-     *         name="desc",
-     *         in="query",
-     *         description="desc field",
-     *         required=true,
-     *         @OA\Schema(type="string")
-     *     ),
+     *     @OA\RequestBody(
+     *         @OA\MediaType(
+     *             mediaType="application/json",
+     *             @OA\Schema(
+     *                 @OA\Property(
+     *                      type="object",
+     *                      @OA\Property(
+     *                          property="unit",
+     *                          type="string"
+     *                      ),
+     *                      @OA\Property(
+     *                          property="desc",
+     *                          type="string"
+     *                      ),
+     *                 ),
+     *                 example={
+     *                     "unit":"kg",
+     *                     "desc":"Kilogram"
+     *                }
+     *             )
+     *         )
+     *      ),
      *     @OA\Response(response="201", description="Created successfully"),
      *     @OA\Response(response="409", description="Unit already exists")
      * )
@@ -155,20 +163,28 @@ class UnitController extends Controller
      *              type="integer"
      *          )
      *      ),
-     *      @OA\Parameter(
-     *         name="unit",
-     *         in="query",
-     *         description="unit field",
-     *         required=true,
-     *         @OA\Schema(type="string")
-     *     ),
-     *      @OA\Parameter(
-     *         name="desc",
-     *         in="query",
-     *         description="desc field",
-     *         required=true,
-     *         @OA\Schema(type="string")
-     *     ),
+     *     @OA\RequestBody(
+     *         @OA\MediaType(
+     *             mediaType="application/json",
+     *             @OA\Schema(
+     *                 @OA\Property(
+     *                      type="object",
+     *                      @OA\Property(
+     *                          property="unit",
+     *                          type="string"
+     *                      ),
+     *                      @OA\Property(
+     *                          property="desc",
+     *                          type="string"
+     *                      ),
+     *                 ),
+     *                 example={
+     *                     "unit":"kg",
+     *                     "desc":"Kilogram"
+     *                }
+     *             )
+     *         )
+     *      ),
      *      @OA\Response(
      *          response=200,
      *          description="Updated successfully"

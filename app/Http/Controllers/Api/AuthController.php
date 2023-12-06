@@ -17,34 +17,38 @@ class AuthController extends Controller
      *     tags={"Authentication"},
      *     summary="Register a new user",
      *     description="Authentication for user",
-     *     @OA\Parameter(
-     *         name="name",
-     *         in="query",
-     *         description="User's name",
-     *         required=true,
-     *         @OA\Schema(type="string")
-     *     ),
-     *     @OA\Parameter(
-     *         name="email",
-     *         in="query",
-     *         description="User's email",
-     *         required=true,
-     *         @OA\Schema(type="string")
-     *     ),
-     *     @OA\Parameter(
-     *         name="no_telp",
-     *         in="query",
-     *         description="User's number phone",
-     *         required=true,
-     *         @OA\Schema(type="string")
-     *     ),
-     *     @OA\Parameter(
-     *         name="password",
-     *         in="query",
-     *         description="User's password",
-     *         required=true,
-     *         @OA\Schema(type="string")
-     *     ),
+     *     @OA\RequestBody(
+     *         @OA\MediaType(
+     *             mediaType="application/json",
+     *             @OA\Schema(
+     *                 @OA\Property(
+     *                      type="object",
+     *                      @OA\Property(
+     *                          property="name",
+     *                          type="string"
+     *                      ),
+     *                      @OA\Property(
+     *                          property="email",
+     *                          type="string"
+     *                      ),
+     *                      @OA\Property(
+     *                          property="no_telp",
+     *                          type="string"
+     *                      ),
+     *                      @OA\Property(
+     *                          property="password",
+     *                          type="string"
+     *                      )
+     *                 ),
+     *                 example={
+     *                     "name":"John",
+     *                     "email":"john@test.com",
+     *                     "no_telp":"628123456789",
+     *                     "password":"johnjohn1"
+     *                }
+     *             )
+     *         )
+     *      ),
      *     @OA\Response(response="201", description="User created successfully"),
      *     @OA\Response(response="400", description="Validation errors")
      * )
@@ -95,20 +99,28 @@ class AuthController extends Controller
      *     tags={"Authentication"},
      *     description="Authentication for user",
      *     summary="Authenticate user and generate token bearer",
-     *     @OA\Parameter(
-     *         name="email",
-     *         in="query",
-     *         description="User's email",
-     *         required=true,
-     *         @OA\Schema(type="string")
-     *     ),
-     *     @OA\Parameter(
-     *         name="password",
-     *         in="query",
-     *         description="User's password",
-     *         required=true,
-     *         @OA\Schema(type="string")
-     *     ),
+     *     @OA\RequestBody(
+     *         @OA\MediaType(
+     *             mediaType="application/json",
+     *             @OA\Schema(
+     *                 @OA\Property(
+     *                      type="object",
+     *                      @OA\Property(
+     *                          property="email",
+     *                          type="string"
+     *                      ),
+     *                      @OA\Property(
+     *                          property="password",
+     *                          type="string"
+     *                      )
+     *                 ),
+     *                 example={
+     *                     "email":"john@test.com",
+     *                     "password":"john@test.com"
+     *                }
+     *             )
+     *         )
+     *      ),
      *     @OA\Response(response="200", description="User Logged In Successfully"),
      *     @OA\Response(response="401", description="Email & Password does not match with our record.")
      * )

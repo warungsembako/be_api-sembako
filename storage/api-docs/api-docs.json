@@ -20,44 +20,40 @@
                 "summary": "Register a new user",
                 "description": "Authentication for user",
                 "operationId": "c7bb21a0d87049e161b8e4c9b0d909f2",
-                "parameters": [
-                    {
-                        "name": "name",
-                        "in": "query",
-                        "description": "User's name",
-                        "required": true,
-                        "schema": {
-                            "type": "string"
-                        }
-                    },
-                    {
-                        "name": "email",
-                        "in": "query",
-                        "description": "User's email",
-                        "required": true,
-                        "schema": {
-                            "type": "string"
-                        }
-                    },
-                    {
-                        "name": "no_telp",
-                        "in": "query",
-                        "description": "User's number phone",
-                        "required": true,
-                        "schema": {
-                            "type": "string"
-                        }
-                    },
-                    {
-                        "name": "password",
-                        "in": "query",
-                        "description": "User's password",
-                        "required": true,
-                        "schema": {
-                            "type": "string"
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "": {
+                                        "properties": {
+                                            "name": {
+                                                "type": "string"
+                                            },
+                                            "email": {
+                                                "type": "string"
+                                            },
+                                            "no_telp": {
+                                                "type": "string"
+                                            },
+                                            "password": {
+                                                "type": "string"
+                                            }
+                                        },
+                                        "type": "object"
+                                    }
+                                },
+                                "type": "object",
+                                "example": {
+                                    "name": "John",
+                                    "email": "john@test.com",
+                                    "no_telp": "628123456789",
+                                    "password": "johnjohn1"
+                                }
+                            }
                         }
                     }
-                ],
+                },
                 "responses": {
                     "201": {
                         "description": "User created successfully"
@@ -76,26 +72,32 @@
                 "summary": "Authenticate user and generate token bearer",
                 "description": "Authentication for user",
                 "operationId": "dd51a484b7fa0f97c7680fdbde14cf5f",
-                "parameters": [
-                    {
-                        "name": "email",
-                        "in": "query",
-                        "description": "User's email",
-                        "required": true,
-                        "schema": {
-                            "type": "string"
-                        }
-                    },
-                    {
-                        "name": "password",
-                        "in": "query",
-                        "description": "User's password",
-                        "required": true,
-                        "schema": {
-                            "type": "string"
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "": {
+                                        "properties": {
+                                            "email": {
+                                                "type": "string"
+                                            },
+                                            "password": {
+                                                "type": "string"
+                                            }
+                                        },
+                                        "type": "object"
+                                    }
+                                },
+                                "type": "object",
+                                "example": {
+                                    "email": "john@test.com",
+                                    "password": "john@test.com"
+                                }
+                            }
                         }
                     }
-                ],
+                },
                 "responses": {
                     "200": {
                         "description": "User Logged In Successfully"
@@ -155,17 +157,28 @@
                 "summary": "Service category",
                 "description": "Endpoint add new category",
                 "operationId": "9b300a1cd5dbb6150e54b7cc55703872",
-                "parameters": [
-                    {
-                        "name": "category",
-                        "in": "query",
-                        "description": "Category field",
-                        "required": true,
-                        "schema": {
-                            "type": "string"
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "": {
+                                        "properties": {
+                                            "category": {
+                                                "type": "string"
+                                            }
+                                        },
+                                        "type": "object"
+                                    }
+                                },
+                                "type": "object",
+                                "example": {
+                                    "category": "sembako"
+                                }
+                            }
                         }
                     }
-                ],
+                },
                 "responses": {
                     "201": {
                         "description": "Created successfully"
@@ -227,17 +240,30 @@
                         "schema": {
                             "type": "integer"
                         }
-                    },
-                    {
-                        "name": "category",
-                        "in": "query",
-                        "description": "Category field",
-                        "required": true,
-                        "schema": {
-                            "type": "string"
-                        }
                     }
                 ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "": {
+                                        "properties": {
+                                            "category": {
+                                                "type": "string"
+                                            }
+                                        },
+                                        "type": "object"
+                                    }
+                                },
+                                "type": "object",
+                                "example": {
+                                    "category": "sembako"
+                                }
+                            }
+                        }
+                    }
+                },
                 "responses": {
                     "200": {
                         "description": "Updated successfully"
@@ -308,71 +334,54 @@
                 "summary": "Service product",
                 "description": "Endpoint add new product",
                 "operationId": "f6c6fa48346dd08aae3060e1e8765913",
-                "parameters": [
-                    {
-                        "name": "unit_id",
-                        "in": "query",
-                        "description": "unit id field",
-                        "required": true,
-                        "schema": {
-                            "type": "string"
-                        }
-                    },
-                    {
-                        "name": "category_id",
-                        "in": "query",
-                        "description": "category id field",
-                        "required": true,
-                        "schema": {
-                            "type": "string"
-                        }
-                    },
-                    {
-                        "name": "name",
-                        "in": "query",
-                        "description": "name field",
-                        "required": true,
-                        "schema": {
-                            "type": "string"
-                        }
-                    },
-                    {
-                        "name": "desc",
-                        "in": "query",
-                        "description": "desc field",
-                        "required": true,
-                        "schema": {
-                            "type": "string"
-                        }
-                    },
-                    {
-                        "name": "price_buy",
-                        "in": "query",
-                        "description": "price_buy field",
-                        "required": true,
-                        "schema": {
-                            "type": "string"
-                        }
-                    },
-                    {
-                        "name": "price_sell",
-                        "in": "query",
-                        "description": "price_sell field",
-                        "required": true,
-                        "schema": {
-                            "type": "string"
-                        }
-                    },
-                    {
-                        "name": "qty",
-                        "in": "query",
-                        "description": "qty field",
-                        "required": true,
-                        "schema": {
-                            "type": "number"
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "": {
+                                        "properties": {
+                                            "unit_id": {
+                                                "type": "integer"
+                                            },
+                                            "category_id": {
+                                                "type": "integer"
+                                            },
+                                            "name": {
+                                                "type": "string"
+                                            },
+                                            "desc": {
+                                                "type": "string"
+                                            },
+                                            "price_buy": {
+                                                "type": "number",
+                                                "format": "float"
+                                            },
+                                            "price_sell": {
+                                                "type": "number",
+                                                "format": "float"
+                                            },
+                                            "qty": {
+                                                "type": "integer"
+                                            }
+                                        },
+                                        "type": "object"
+                                    }
+                                },
+                                "type": "object",
+                                "example": {
+                                    "unit_id": 1,
+                                    "category_id": 1,
+                                    "name": "Beras",
+                                    "desc": "Beras Pulen",
+                                    "price_buy": 15000,
+                                    "price_sell": 18000,
+                                    "qty": 180
+                                }
+                            }
                         }
                     }
-                ],
+                },
                 "responses": {
                     "201": {
                         "description": "Created successfully"
@@ -429,76 +438,61 @@
                     {
                         "name": "id",
                         "in": "path",
-                        "description": "category data id",
+                        "description": "product data id",
                         "required": true,
                         "schema": {
                             "type": "integer"
                         }
-                    },
-                    {
-                        "name": "unit_id",
-                        "in": "query",
-                        "description": "unit id field",
-                        "required": true,
-                        "schema": {
-                            "type": "string"
-                        }
-                    },
-                    {
-                        "name": "category_id",
-                        "in": "query",
-                        "description": "category id field",
-                        "required": true,
-                        "schema": {
-                            "type": "string"
-                        }
-                    },
-                    {
-                        "name": "name",
-                        "in": "query",
-                        "description": "name field",
-                        "required": true,
-                        "schema": {
-                            "type": "string"
-                        }
-                    },
-                    {
-                        "name": "desc",
-                        "in": "query",
-                        "description": "desc field",
-                        "required": true,
-                        "schema": {
-                            "type": "string"
-                        }
-                    },
-                    {
-                        "name": "price_buy",
-                        "in": "query",
-                        "description": "price_buy field",
-                        "required": true,
-                        "schema": {
-                            "type": "string"
-                        }
-                    },
-                    {
-                        "name": "price_sell",
-                        "in": "query",
-                        "description": "price_sell field",
-                        "required": true,
-                        "schema": {
-                            "type": "string"
-                        }
-                    },
-                    {
-                        "name": "qty",
-                        "in": "query",
-                        "description": "qty field",
-                        "required": true,
-                        "schema": {
-                            "type": "number"
-                        }
                     }
                 ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "": {
+                                        "properties": {
+                                            "unit_id": {
+                                                "type": "integer"
+                                            },
+                                            "category_id": {
+                                                "type": "integer"
+                                            },
+                                            "name": {
+                                                "type": "string"
+                                            },
+                                            "desc": {
+                                                "type": "string"
+                                            },
+                                            "price_buy": {
+                                                "type": "number",
+                                                "format": "float"
+                                            },
+                                            "price_sell": {
+                                                "type": "number",
+                                                "format": "float"
+                                            },
+                                            "qty": {
+                                                "type": "ineteger"
+                                            }
+                                        },
+                                        "type": "object"
+                                    }
+                                },
+                                "type": "object",
+                                "example": {
+                                    "unit_id": 1,
+                                    "category_id": 1,
+                                    "name": "Beras",
+                                    "desc": "Beras Pulen",
+                                    "price_buy": 15000,
+                                    "price_sell": 18000,
+                                    "qty": 180
+                                }
+                            }
+                        }
+                    }
+                },
                 "responses": {
                     "201": {
                         "description": "Created successfully"
@@ -569,35 +563,36 @@
                 "summary": "Service Transaction",
                 "description": "Endpoint post transaction",
                 "operationId": "9e3072adb52a6e629183961c7919ba78",
-                "parameters": [
-                    {
-                        "name": "product_id",
-                        "in": "query",
-                        "description": "product_id field",
-                        "required": true,
-                        "schema": {
-                            "type": "string"
-                        }
-                    },
-                    {
-                        "name": "qty",
-                        "in": "query",
-                        "description": "qty field",
-                        "required": true,
-                        "schema": {
-                            "type": "string"
-                        }
-                    },
-                    {
-                        "name": "total",
-                        "in": "query",
-                        "description": "total field",
-                        "required": true,
-                        "schema": {
-                            "type": "number"
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "": {
+                                        "properties": {
+                                            "product_id": {
+                                                "type": "integer"
+                                            },
+                                            "qyt": {
+                                                "type": "integer"
+                                            },
+                                            "total": {
+                                                "type": "integer"
+                                            }
+                                        },
+                                        "type": "object"
+                                    }
+                                },
+                                "type": "object",
+                                "example": {
+                                    "product_id": 1,
+                                    "qty": 1,
+                                    "total": 400000
+                                }
+                            }
                         }
                     }
-                ],
+                },
                 "responses": {
                     "201": {
                         "description": "Created successfully"
@@ -657,37 +652,40 @@
                         "description": "category data transaction_number",
                         "required": true,
                         "schema": {
-                            "type": "string"
-                        }
-                    },
-                    {
-                        "name": "product_id",
-                        "in": "query",
-                        "description": "product_id field",
-                        "required": true,
-                        "schema": {
-                            "type": "string"
-                        }
-                    },
-                    {
-                        "name": "qty",
-                        "in": "query",
-                        "description": "qty field",
-                        "required": true,
-                        "schema": {
-                            "type": "string"
-                        }
-                    },
-                    {
-                        "name": "total",
-                        "in": "query",
-                        "description": "total field",
-                        "required": true,
-                        "schema": {
-                            "type": "number"
+                            "type": "integer"
                         }
                     }
                 ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "": {
+                                        "properties": {
+                                            "product_id": {
+                                                "type": "integer"
+                                            },
+                                            "qyt": {
+                                                "type": "integer"
+                                            },
+                                            "total": {
+                                                "type": "integer"
+                                            }
+                                        },
+                                        "type": "object"
+                                    }
+                                },
+                                "type": "object",
+                                "example": {
+                                    "product_id": 1,
+                                    "qty": 1,
+                                    "totol": 400000
+                                }
+                            }
+                        }
+                    }
+                },
                 "responses": {
                     "201": {
                         "description": "Created successfully"
@@ -701,7 +699,9 @@
                         "sanctum": []
                     }
                 ]
-            },
+            }
+        },
+        "/api/transactiondelete/{transaction_number}": {
             "delete": {
                 "tags": [
                     "Transaction"
@@ -758,26 +758,32 @@
                 "summary": "Service unit",
                 "description": "Endpoint add new unit",
                 "operationId": "302327015261cb20d1a667f4b5b4c63e",
-                "parameters": [
-                    {
-                        "name": "unit",
-                        "in": "query",
-                        "description": "unit field",
-                        "required": true,
-                        "schema": {
-                            "type": "string"
-                        }
-                    },
-                    {
-                        "name": "desc",
-                        "in": "query",
-                        "description": "desc field",
-                        "required": true,
-                        "schema": {
-                            "type": "string"
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "": {
+                                        "properties": {
+                                            "unit": {
+                                                "type": "string"
+                                            },
+                                            "desc": {
+                                                "type": "string"
+                                            }
+                                        },
+                                        "type": "object"
+                                    }
+                                },
+                                "type": "object",
+                                "example": {
+                                    "unit": "kg",
+                                    "desc": "Kilogram"
+                                }
+                            }
                         }
                     }
-                ],
+                },
                 "responses": {
                     "201": {
                         "description": "Created successfully"
@@ -839,26 +845,34 @@
                         "schema": {
                             "type": "integer"
                         }
-                    },
-                    {
-                        "name": "unit",
-                        "in": "query",
-                        "description": "unit field",
-                        "required": true,
-                        "schema": {
-                            "type": "string"
-                        }
-                    },
-                    {
-                        "name": "desc",
-                        "in": "query",
-                        "description": "desc field",
-                        "required": true,
-                        "schema": {
-                            "type": "string"
-                        }
                     }
                 ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "": {
+                                        "properties": {
+                                            "unit": {
+                                                "type": "string"
+                                            },
+                                            "desc": {
+                                                "type": "string"
+                                            }
+                                        },
+                                        "type": "object"
+                                    }
+                                },
+                                "type": "object",
+                                "example": {
+                                    "unit": "kg",
+                                    "desc": "Kilogram"
+                                }
+                            }
+                        }
+                    }
+                },
                 "responses": {
                     "200": {
                         "description": "Updated successfully"

@@ -66,55 +66,54 @@ class ProductController extends Controller
      *     description="Endpoint add new product",
      *     summary="Service product",
      *     security={{"sanctum": {}}},
-     *     @OA\Parameter(
-     *         name="unit_id",
-     *         in="query",
-     *         description="unit id field",
-     *         required=true,
-     *         @OA\Schema(type="string")
-     *     ),
-     *     @OA\Parameter(
-     *         name="category_id",
-     *         in="query",
-     *         description="category id field",
-     *         required=true,
-     *         @OA\Schema(type="string")
-     *     ),
-     *     @OA\Parameter(
-     *         name="name",
-     *         in="query",
-     *         description="name field",
-     *         required=true,
-     *         @OA\Schema(type="string")
-     *     ),
-     *     @OA\Parameter(
-     *         name="desc",
-     *         in="query",
-     *         description="desc field",
-     *         required=true,
-     *         @OA\Schema(type="string")
-     *     ),
-     *     @OA\Parameter(
-     *         name="price_buy",
-     *         in="query",
-     *         description="price_buy field",
-     *         required=true,
-     *         @OA\Schema(type="string")
-     *     ),
-     *     @OA\Parameter(
-     *         name="price_sell",
-     *         in="query",
-     *         description="price_sell field",
-     *         required=true,
-     *         @OA\Schema(type="string")
-     *     ),
-     *     @OA\Parameter(
-     *         name="qty",
-     *         in="query",
-     *         description="qty field",
-     *         required=true,
-     *         @OA\Schema(type="number")
-     *     ),
+     *     @OA\RequestBody(
+     *         @OA\MediaType(
+     *             mediaType="application/json",
+     *             @OA\Schema(
+     *                 @OA\Property(
+     *                      type="object",
+     *                      @OA\Property(
+     *                          property="unit_id",
+     *                          type="integer"
+     *                      ),
+     *                      @OA\Property(
+     *                          property="category_id",
+     *                          type="integer"
+     *                      ),
+     *                      @OA\Property(
+     *                          property="name",
+     *                          type="string"
+     *                      ),
+     *                      @OA\Property(
+     *                          property="desc",
+     *                          type="string"
+     *                      ),
+     *                      @OA\Property(
+     *                          property="price_buy",
+     *                          type="float"
+     *                      ),
+     *                      @OA\Property(
+     *                          property="price_sell",
+     *                          type="float"
+     *                      ),
+     *                      @OA\Property(
+     *                          property="qty",
+     *                          type="integer"
+     *                      )
+     *                 ),
+     *                 example={
+     *                     "unit_id":1,
+     *                     "category_id":1,
+     *                     "name":"Beras",
+     *                     "desc":"Beras Pulen",
+     *                     "price_buy":15000,
+     *                     "price_sell":18000,
+     *                     "qty":180,
+     * 
+     *                }
+     *             )
+     *         )
+     *      ),
      *     @OA\Response(response="201", description="Created successfully"),
      *     @OA\Response(response="400", description="Field product must be filled")
      * )
@@ -184,62 +183,61 @@ class ProductController extends Controller
      *     security={{"sanctum": {}}},
      *     @OA\Parameter(
      *          name="id",
-     *          description="category data id",
+     *          description="product data id",
      *          required=true,
      *          in="path",
      *          @OA\Schema(
      *              type="integer"
      *          )
      *     ),
-     *     @OA\Parameter(
-     *         name="unit_id",
-     *         in="query",
-     *         description="unit id field",
-     *         required=true,
-     *         @OA\Schema(type="string")
-     *     ),
-     *     @OA\Parameter(
-     *         name="category_id",
-     *         in="query",
-     *         description="category id field",
-     *         required=true,
-     *         @OA\Schema(type="string")
-     *     ),
-     *     @OA\Parameter(
-     *         name="name",
-     *         in="query",
-     *         description="name field",
-     *         required=true,
-     *         @OA\Schema(type="string")
-     *     ),
-     *     @OA\Parameter(
-     *         name="desc",
-     *         in="query",
-     *         description="desc field",
-     *         required=true,
-     *         @OA\Schema(type="string")
-     *     ),
-     *     @OA\Parameter(
-     *         name="price_buy",
-     *         in="query",
-     *         description="price_buy field",
-     *         required=true,
-     *         @OA\Schema(type="string")
-     *     ),
-     *     @OA\Parameter(
-     *         name="price_sell",
-     *         in="query",
-     *         description="price_sell field",
-     *         required=true,
-     *         @OA\Schema(type="string")
-     *     ),
-     *     @OA\Parameter(
-     *         name="qty",
-     *         in="query",
-     *         description="qty field",
-     *         required=true,
-     *         @OA\Schema(type="number")
-     *     ),
+     *     @OA\RequestBody(
+     *         @OA\MediaType(
+     *             mediaType="application/json",
+     *             @OA\Schema(
+     *                 @OA\Property(
+     *                      type="object",
+     *                      @OA\Property(
+     *                          property="unit_id",
+     *                          type="integer"
+     *                      ),
+     *                      @OA\Property(
+     *                          property="category_id",
+     *                          type="integer"
+     *                      ),
+     *                      @OA\Property(
+     *                          property="name",
+     *                          type="string"
+     *                      ),
+     *                      @OA\Property(
+     *                          property="desc",
+     *                          type="string"
+     *                      ),
+     *                      @OA\Property(
+     *                          property="price_buy",
+     *                          type="float"
+     *                      ),
+     *                      @OA\Property(
+     *                          property="price_sell",
+     *                          type="float"
+     *                      ),
+     *                      @OA\Property(
+     *                          property="qty",
+     *                          type="ineteger"
+     *                      )
+     *                 ),
+     *                 example={
+     *                     "unit_id":1,
+     *                     "category_id":1,
+     *                     "name":"Beras",
+     *                     "desc":"Beras Pulen",
+     *                     "price_buy":15000,
+     *                     "price_sell":18000,
+     *                     "qty":180,
+     * 
+     *                }
+     *             )
+     *         )
+     *      ),
      *     @OA\Response(response="201", description="Created successfully"),
      *     @OA\Response(response="400", description="Field product must be filled")
      * )

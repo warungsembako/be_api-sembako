@@ -67,27 +67,34 @@ class TransactionController extends Controller
      *     description="Endpoint post transaction",
      *     summary="Service Transaction",
      *     security={{"sanctum": {}}},
-     *     @OA\Parameter(
-     *         name="product_id",
-     *         in="query",
-     *         description="product_id field",
-     *         required=true,
-     *         @OA\Schema(type="string")
-     *     ),
-     *     @OA\Parameter(
-     *         name="qty",
-     *         in="query",
-     *         description="qty field",
-     *         required=true,
-     *         @OA\Schema(type="string")
-     *     ),
-     *     @OA\Parameter(
-     *         name="total",
-     *         in="query",
-     *         description="total field",
-     *         required=true,
-     *         @OA\Schema(type="number")
-     *     ),
+     *     @OA\RequestBody(
+     *         @OA\MediaType(
+     *             mediaType="application/json",
+     *             @OA\Schema(
+     *                 @OA\Property(
+     *                      type="object",
+     *                      @OA\Property(
+     *                          property="product_id",
+     *                          type="integer"
+     *                      ),
+     *                      @OA\Property(
+     *                          property="qyt",
+     *                          type="integer"
+     *                      ),
+     *                      @OA\Property(
+     *                          property="total",
+     *                          type="integer"
+     *                      )
+     *                 ),
+     *                 example={
+     *                     "product_id":1,
+     *                     "qty":1,
+     *                     "total":400000,
+     * 
+     *                }
+     *             )
+     *         )
+     *      ),
      *     @OA\Response(response="201", description="Created successfully"),
      *     @OA\Response(response="400", description="Field product must be filled")
      * )
@@ -216,30 +223,37 @@ class TransactionController extends Controller
      *          required=true,
      *          in="path",
      *          @OA\Schema(
-     *              type="string"
+     *              type="integer"
      *          )
      *     ),
-     *     @OA\Parameter(
-     *         name="product_id",
-     *         in="query",
-     *         description="product_id field",
-     *         required=true,
-     *         @OA\Schema(type="string")
-     *     ),
-     *     @OA\Parameter(
-     *         name="qty",
-     *         in="query",
-     *         description="qty field",
-     *         required=true,
-     *         @OA\Schema(type="string")
-     *     ),
-     *     @OA\Parameter(
-     *         name="total",
-     *         in="query",
-     *         description="total field",
-     *         required=true,
-     *         @OA\Schema(type="number")
-     *     ),
+     *     @OA\RequestBody(
+     *         @OA\MediaType(
+     *             mediaType="application/json",
+     *             @OA\Schema(
+     *                 @OA\Property(
+     *                      type="object",
+     *                      @OA\Property(
+     *                          property="product_id",
+     *                          type="integer"
+     *                      ),
+     *                      @OA\Property(
+     *                          property="qyt",
+     *                          type="integer"
+     *                      ),
+     *                      @OA\Property(
+     *                          property="total",
+     *                          type="integer"
+     *                      )
+     *                 ),
+     *                 example={
+     *                     "product_id":1,
+     *                     "qty":1,
+     *                     "totol":400000,
+     * 
+     *                }
+     *             )
+     *         )
+     *      ),
      *     @OA\Response(response="201", description="Created successfully"),
      *     @OA\Response(response="400", description="Field product must be filled")
      * )
@@ -262,7 +276,7 @@ class TransactionController extends Controller
 
     /**
      * @OA\Delete(
-     *      path="/api/transaction/{transaction_number}",
+     *      path="/api/transactiondelete/{transaction_number}",
      *      operationId="delete transaction",
      *      tags={"Transaction"},
      *      summary="Delete existing transaction",
@@ -285,9 +299,7 @@ class TransactionController extends Controller
      */
     public function destroy($transaction_number)
     {
-        $transaction = Transaction::where('transaction_number', $transaction_number)->firstOrFail();
-
-        $transaction->delete();
+        $transaction = Transaction::where('transaction_number', $transaction_number)->delete();
         return response(null, 204);
     }
 }

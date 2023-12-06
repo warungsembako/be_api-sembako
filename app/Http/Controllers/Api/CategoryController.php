@@ -67,17 +67,28 @@ class CategoryController extends Controller
      *     description="Endpoint add new category",
      *     summary="Service category",
      *     security={{"sanctum": {}}},
-     *     @OA\Parameter(
-     *         name="category",
-     *         in="query",
-     *         description="Category field",
-     *         required=true,
-     *         @OA\Schema(type="string")
-     *     ),
+     *     @OA\RequestBody(
+     *         @OA\MediaType(
+     *             mediaType="application/json",
+     *             @OA\Schema(
+     *                 @OA\Property(
+     *                      type="object",
+     *                      @OA\Property(
+     *                          property="category",
+     *                          type="string"
+     *                      ),
+     *                  ),
+     *                 example={
+     *                     "category":"sembako"
+     *                }
+     *             )
+     *         )
+     *      ),
      *     @OA\Response(response="201", description="Created successfully"),
      *     @OA\Response(response="400", description="Field category must be filled")
      * )
      */
+
     public function store(CategoryRequest $request)
     {
         $category = Category::create([
@@ -143,13 +154,23 @@ class CategoryController extends Controller
      *              type="integer"
      *          )
      *      ),
-     *      @OA\Parameter(
-     *         name="category",
-     *         in="query",
-     *         description="Category field",
-     *         required=true,
-     *         @OA\Schema(type="string")
-     *     ),
+     *     @OA\RequestBody(
+     *         @OA\MediaType(
+     *             mediaType="application/json",
+     *             @OA\Schema(
+     *                 @OA\Property(
+     *                      type="object",
+     *                      @OA\Property(
+     *                          property="category",
+     *                          type="string"
+     *                      ),
+     *                  ),
+     *                 example={
+     *                     "category":"sembako"
+     *                }
+     *             )
+     *         )
+     *      ),
      *      @OA\Response(
      *          response=200,
      *          description="Updated successfully"
@@ -176,7 +197,7 @@ class CategoryController extends Controller
      * @return \Illuminate\Http\Response
      */
 
-     /**
+    /**
      * @OA\Delete(
      *      path="/api/category/{id}",
      *      operationId="delete category",
